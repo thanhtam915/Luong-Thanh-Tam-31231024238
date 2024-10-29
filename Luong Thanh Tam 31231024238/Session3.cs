@@ -8,7 +8,7 @@ namespace Luong_Thanh_Tam_31231024238
 {
     internal class Session3
     {
-        public static void Main()
+        public static void Main3()
         {
             //Ex2();
             //Ex3();
