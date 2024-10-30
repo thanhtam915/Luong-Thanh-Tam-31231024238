@@ -8,4 +8,20 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Session1.cs" />
+    <Compile Remove="Session2.cs" />
+    <Compile Remove="Session3.cs" />
+    <Compile Remove="Session4.cs" />
+    <Compile Remove="TaiXiu.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Session1.cs" />
+    <None Include="Session2.cs" />
+    <None Include="Session3.cs" />
+    <None Include="Session4.cs" />
+    <None Include="TaiXiu.cs" />
+  </ItemGroup>
+
 </Project>
