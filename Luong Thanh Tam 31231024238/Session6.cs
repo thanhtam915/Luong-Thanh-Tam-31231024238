@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,16 +12,15 @@ namespace Luong_Thanh_Tam_31231024238
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Nhap n: ");
+            Console.Write("Nhap n: ");
             int n = int.Parse(Console.ReadLine());
             int[] a = new int[n];
-            generateRandomArray(a);
+            Input(a, n);
             PrintArray(a);
-            Console.ReadKey();
 
             //EX1: To caculate the average value of array elements
             double Avg = Average(a);
-            Console.WriteLine($"Avarage of this integer array is {Avg}");
+            Console.WriteLine($"\nAvarage of this integer array is {Avg}");
 
             //EX2: To test if an array contains a specific value
             Console.WriteLine("Nhap gia tri can tim");
@@ -28,6 +28,8 @@ namespace Luong_Thanh_Tam_31231024238
             bool pos1 = ValidValueInArray(a, soCanTim0);
             if (pos1 == true)
                 Console.WriteLine($"This array include number {soCanTim0}");
+            else
+                Console.WriteLine($"This array does not include number {soCanTim0}");
 
             //EX3: To find the index of an array element
             Console.WriteLine("Nhap so can tim: ");
@@ -47,11 +49,36 @@ namespace Luong_Thanh_Tam_31231024238
             int removedElement = int.Parse(Console.ReadLine());
             int[] newArray = RemoveElement(a, removedElement);
             PrintArray(newArray);
+            Console.WriteLine();
 
-            //EX: To find the maximum and minimum value of value
+            //EX5: To find the maximum and minimum value of value
             var (max, min) = FindMaxAndMin(a);
             Console.WriteLine($"Max: {max}\nMin: {min}");
 
+            //EX6: To reverse an array from an array
+            Console.WriteLine("Reversed Array");
+            int[] reversedArray = ReverseArray(a);
+            PrintArray(reversedArray);
+            Console.ReadKey();
+
+            //EX7: To find duplicate values in an array of values
+            var (pos, DuplicateElements) = FindDuplicates(a);
+            if (pos == true)
+            {
+                Console.WriteLine("There are duplicated elements");
+                PrintArray(DuplicateElements);
+            }
+            else
+            {
+                Console.WriteLine("There are not duplicated elements");
+            }
+            Console.ReadKey();
+
+            //EX8: To remove duplicate elements from an array.
+            var NoDuplicatedArray = RemoveDuplicate(a);
+            PrintArray(NoDuplicatedArray); 
+            Console.WriteLine();
+            Console.ReadKey();
         }
 
 
@@ -155,6 +182,53 @@ namespace Luong_Thanh_Tam_31231024238
             }
             return (max, min);
         }
-
+        public static int[] ReverseArray(int[] a)
+        {
+            int[] reversedArray = new int[a.Length];
+            int index = 0;
+            for (int i = 0; i< a.Length; i++)
+            {
+                reversedArray[index++] = a[a.Length - 1 - i];
+            }
+            return reversedArray;
+        }
+        public static (bool pos, int[] duplicatedarray) FindDuplicates(int[] a)
+        { 
+            bool foundDuplicates = false;
+            List<int> duplicatedList = new List<int>();
+            for (int i = 0; i < a.Length; i++)
+            {
+                for(int j = i +1; j< a.Length; j++)
+                {
+                    if(a[j] == a[i])
+                    {
+                        if (!duplicatedList.Contains(a[i]))
+                        {
+                            duplicatedList.Add(a[i]);
+                            foundDuplicates = true;
+                        }
+                    }
+                }
+            }
+            int[] duplicatedarray = duplicatedList.ToArray();
+            return (foundDuplicates, duplicatedarray);
+        }
+        public static int[] RemoveDuplicate(int[] a)
+        {
+            var (pos, duplicatedArray) = FindDuplicates(a);
+            if (pos == false)
+            {
+                return a;
+            }
+            List<int> resultList = new List<int>();
+            foreach (int item in a)
+            {
+                 if (duplicatedArray.Contains(item) == false || resultList.Contains(item) == false)
+                {
+                    resultList.Add(item);
+                }
+            }
+            return resultList.ToArray();
+        }
     }
 }
