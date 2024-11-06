@@ -9,89 +9,152 @@ namespace Luong_Thanh_Tam_31231024238
 {
     internal class Session_6
     {
-        public static void Main1()
+        public static void Main(string[] args)
         {
-            Console.OutputEncoding = Encoding.UTF8;
-            Ex4();
-
+            Console.WriteLine("Nhap n: ");
+            int n = int.Parse(Console.ReadLine());
+            int[] a = new int[n];
+            generateRandomArray(a);
+            PrintArray(a);
             Console.ReadKey();
 
-        }
-        public static void Ex1()
-        {
-            Console.WriteLine("Nhap day so cach nhau bang space: ");
-            string n1String = Console.ReadLine();
-            string[] n1array = n1String.Split(' ');
-            int[] n1intArray = Array.ConvertAll(n1array, int.Parse);
-            int sum = 0;
-            for (int i = 0; i < n1intArray.Length; i++)
+            //EX1: To caculate the average value of array elements
+            double Avg = Average(a);
+            Console.WriteLine($"Avarage of this integer array is {Avg}");
+
+            //EX2: To test if an array contains a specific value
+            Console.WriteLine("Nhap gia tri can tim");
+            int soCanTim0 = int.Parse(Console.ReadLine());
+            bool pos1 = ValidValueInArray(a, soCanTim0);
+            if (pos1 == true)
+                Console.WriteLine($"This array include number {soCanTim0}");
+
+            //EX3: To find the index of an array element
+            Console.WriteLine("Nhap so can tim: ");
+            int soCanTim = int.Parse(Console.ReadLine());
+            int pos2 = FindIndexofValue(a, soCanTim);
+            if (pos2 == -1)
             {
-                sum += n1intArray[i];
+                Console.WriteLine($"So {soCanTim} khong ton tai trong mang");
             }
-            Console.WriteLine($"Average of Array is {sum / n1intArray.Length}");
-        }
-        public static void Ex2()
-        {
-            Console.WriteLine("Nhap mang gia tri cua ban cach nhau bang space: ");
-            string n2String = Console.ReadLine();
-            string[] n2Array = n2String.Split(" ");
-            Console.WriteLine("Nhap gia tri muon do: ");
-            string value2 = Console.ReadLine();
-            bool chuaGiaTri = false;
-            
-            foreach(string phanTu in n2Array)
-{
-                if (phanTu == value2)
-                {
-                    chuaGiaTri = true;
-                    break;
-                }
+            else if (pos2 != -1)
+            {
+                Console.WriteLine($"So {soCanTim} tai vi tri {pos2}");
             }
 
-            if (chuaGiaTri)
-            {
-                Console.WriteLine("Mảng chứa giá trị này.");
-            }
-            else
-            {
-                Console.WriteLine("Mảng không chứa giá trị này.");
-            }
-            
+            //EX4: To remove a specific element from an array
+            Console.WriteLine("Enter removed element: ");
+            int removedElement = int.Parse(Console.ReadLine());
+            int[] newArray = RemoveElement(a, removedElement);
+            PrintArray(newArray);
+
+            //EX: To find the maximum and minimum value of value
+            var (max, min) = FindMaxAndMin(a);
+            Console.WriteLine($"Max: {max}\nMin: {min}");
+
         }
-        public static void Ex3()
+
+
+
+        static void Input(int[] a, int n)
         {
-            Console.WriteLine("Nhap mang gia tri cach nhau bang space: ");
-            string n3String = Console.ReadLine();
-            string[] n3Array = n3String.Split(" ");
-            Console.WriteLine("Nhap gia tri can tim do: ");
-            string value3 = Console.ReadLine();
-            int viTri = 0;
-            for (int i = 0;i < n3Array.Length; i++)
-            {
-                if (n3Array[i] == value3)
-                {
-                    Console.WriteLine($"Vi tri cua gia tri can tim la {i}");
-                }
-                else if (i == n3Array.Length - 1)
-                {
-                    Console.WriteLine("Mang khong chua gia tri nay!");
-                }
-            }
-        }
-        public static void Ex4()
-        {
-            Console.WriteLine("Nhap so gia tri cua mang (N): ");
-            int n = int.Parse(Console.ReadLine());
-            int[] randomArray = new int[n];
-            Random rnd = new Random();
             for (int i = 0; i < n; i++)
             {
-                randomArray[i] = rnd.Next(1, 101);
-            }
-            foreach (int item in randomArray)
-            {
-                Console.Write(item + " ");
+                Console.WriteLine($"Nhap phan tư {i}");
+                int v = int.Parse(Console.ReadLine());
+                a[i] = v;
             }
         }
+        static void generateRandomArray(int[] a)
+        {
+            Random rnd = new Random();
+            for (int i = 0; i < a.Length; i++)
+            {
+                a[i] += rnd.Next(0, 100);
+            }
+        }
+        static void PrintArray(int[] a)
+        {
+            foreach (int items in a)
+            {
+                Console.Write($"{items} ");
+            }
+        }
+
+        public static double Average(int[] a)
+        {
+            int sum = 0;
+            for (int i = 0; i < a.Length; i++)
+            {
+                sum = sum + a[i];
+            }
+            double Average = (double)sum / a.Length;
+            return Average;
+        }
+
+        public static bool ValidValueInArray(int[] a, int soCanTim)
+        {
+            foreach (int item in a)
+            {
+                if (item == soCanTim)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public static int FindIndexofValue(int[] a, int socantim)
+        {
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (a[i] == socantim)
+                    return i;
+            }
+            return -1;
+        }
+        public static int[] RemoveElement(int[] a, int elementRemoved)
+        {
+            int count = 0;
+            foreach (int item in a)
+            {
+                if (item != elementRemoved)
+                    count++;
+            }
+            int[] result = new int[count];
+            int index = 0;
+
+            foreach (int item in a)
+            {
+                if (item != elementRemoved)
+                {
+                    result[index++] = item;
+                }
+            }
+            return result;
+        }
+        public static (int max, int min) FindMaxAndMin(int[] a)
+        {
+            if (a == null || a.Length == 0)
+            {
+                throw new ArgumentException("Invalid Value, Empty Array!");
+            }
+
+            int max = a[0];
+            int min = a[0];
+
+            foreach (int item in a)
+            {
+                if (item > max)
+                {
+                    max = item;
+                }
+                if (item < min)
+                {
+                    min = item;
+                }
+            }
+            return (max, min);
+        }
+
     }
 }
