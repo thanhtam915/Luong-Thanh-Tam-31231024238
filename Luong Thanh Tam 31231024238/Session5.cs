@@ -10,7 +10,7 @@ namespace Luong_Thanh_Tam_31231024238
 {
     internal class Session5
     {
-        public static void Main()
+        public static void Main5()
         {
             //EX1
             //Console.WriteLine("Nhap 3 chu so cach nhau bang khoang trang: ");
