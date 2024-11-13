@@ -11,7 +11,7 @@ namespace Luong_Thanh_Tam_31231024238
         public static void Main()
         {
             int[][] a;
-            Console.WriteLine("Enter numbers of row: "); int rows = int.Parse(Console.ReadLine());
+            Console.Write("Enter numbers of row: "); int rows = int.Parse(Console.ReadLine());
             a = new int[rows][];
             NhapMang(a, rows);
 
@@ -25,7 +25,7 @@ namespace Luong_Thanh_Tam_31231024238
             Random random = new Random();
             for (int i = 0; i < a.Length; i++)
             {
-                Console.WriteLine($"Enter numbers of columns for row {i}: ");
+                Console.Write($"Enter numbers of columns for row {i}: ");
                 int col = int.Parse(Console.ReadLine());
                 a[i] = new int[col];
                 for (int j = 0; j < col; j++)
@@ -38,7 +38,7 @@ namespace Luong_Thanh_Tam_31231024238
         {
             for (int i = 0; i < a.Length; i++)
             {
-                Console.WriteLine($"Enter numbers of columns for row {i}: ");
+                Console.Write($"Enter numbers of columns for row {i}: ");
                 int col = int.Parse(Console.ReadLine());
                 a[i] = new int[col];
                 for (int j = 0; j < col; j++)
