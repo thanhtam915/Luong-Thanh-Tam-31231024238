@@ -17,6 +17,7 @@
     <Compile Remove="Session6.cs" />
     <Compile Remove="Session7.cs" />
     <Compile Remove="Session8-01.cs" />
+    <Compile Remove="Session8-03.cs" />
     <Compile Remove="TaiXiu.cs" />
   </ItemGroup>
 
@@ -29,6 +30,7 @@
     <None Include="Session6.cs" />
     <None Include="Session7.cs" />
     <None Include="Session8-01.cs" />
+    <None Include="Session8-03.cs" />
     <None Include="TaiXiu.cs" />
   </ItemGroup>
 

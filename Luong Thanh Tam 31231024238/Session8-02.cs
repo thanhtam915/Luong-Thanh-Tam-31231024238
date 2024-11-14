@@ -13,14 +13,20 @@ namespace Luong_Thanh_Tam_31231024238
             int[][] a;
             Console.Write("Enter numbers of row: "); int rows = int.Parse(Console.ReadLine());
             a = new int[rows][];
-            NhapMang(a, rows);
 
+            //EX1:
+            //NhapMang(a);
+
+            //EX2:
+            NhapMangRandom(a);
             XuatMang(a);
+
+            PrintMaxValue(a);
 
             Console.ReadKey();
         }
 
-        private static void NhapMangRandom(int[][] a, int rows)
+        public static void NhapMangRandom(int[][] a)
         {
             Random random = new Random();
             for (int i = 0; i < a.Length; i++)
@@ -34,7 +40,7 @@ namespace Luong_Thanh_Tam_31231024238
                 }
             }
         }
-        private static void NhapMang(int[][] a, int rows)
+        public static void NhapMang(int[][] a)
         {
             for (int i = 0; i < a.Length; i++)
             {
@@ -59,12 +65,42 @@ namespace Luong_Thanh_Tam_31231024238
                 Console.WriteLine();
             }
         }
-        public static void SortRow(int[][] a, int row)
+        public static void PrintMaxValue(int[][] a)
         {
-            int[] line = a[row];
-            for (int i = 0;i< line.Length ; i++)
+            int max = a[0][0];
+            for (int i =0;i < a.Length; i++)
             {
-                for (int j = 0; j < i-1; j++)
+                for (int j = 0; j < a[i].Length; j++)
+                {
+                    if (a[i][j] > max)
+                    {
+                        max = a[i][j];
+                    }
+                }
+            }
+            Console.WriteLine($"Max of this array is: {max}");
+            
+            for (int i = 0; i < a.Length; i++)
+            {
+                int max1 = a[i][0];
+                for (int j = 0; j < a[i].Length; j++)
+                {
+                    if (a[i][j] > max1)
+                    {
+                        max1 = a[i][j];
+                    }
+                }
+                Console.WriteLine($"Max of this array[{i}] is: {max1}");
+            }
+        }
+        public static void SortRow(int[][] a)
+        {
+            Console.Write("Nhap dong ban muon sort: ");
+            int row = int.Parse(Console.ReadLine());
+            int[] line = a[row];
+            for (int i = 0; i < line.Length; i++)
+            {
+                for (int j = 0; j < i - 1; j++)
                     if (line[i] > line[j])
                     {
                         int temp = line[i];
@@ -72,6 +108,7 @@ namespace Luong_Thanh_Tam_31231024238
                         line[j] = temp;
                     }
             }
+
         }
     }
 }
