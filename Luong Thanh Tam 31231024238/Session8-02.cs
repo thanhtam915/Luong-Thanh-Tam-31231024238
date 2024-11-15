@@ -23,6 +23,10 @@ namespace Luong_Thanh_Tam_31231024238
 
             PrintMaxValue(a);
 
+            SelectionSortRow(a);
+
+            XuatMang(a);
+
             Console.ReadKey();
         }
 
@@ -56,9 +60,9 @@ namespace Luong_Thanh_Tam_31231024238
         }
         public static void XuatMang(int[][] a)
         {
-            for(int i = 0;i < a.Length; i++)
+            for (int i = 0; i < a.Length; i++)
             {
-                for (int j = 0;j < a[i].Length; j++)
+                for (int j = 0; j < a[i].Length; j++)
                 {
                     Console.Write(a[i][j] + "\t");
                 }
@@ -68,7 +72,7 @@ namespace Luong_Thanh_Tam_31231024238
         public static void PrintMaxValue(int[][] a)
         {
             int max = a[0][0];
-            for (int i =0;i < a.Length; i++)
+            for (int i = 0; i < a.Length; i++)
             {
                 for (int j = 0; j < a[i].Length; j++)
                 {
@@ -79,7 +83,7 @@ namespace Luong_Thanh_Tam_31231024238
                 }
             }
             Console.WriteLine($"Max of this array is: {max}");
-            
+
             for (int i = 0; i < a.Length; i++)
             {
                 int max1 = a[i][0];
@@ -93,22 +97,27 @@ namespace Luong_Thanh_Tam_31231024238
                 Console.WriteLine($"Max of this array[{i}] is: {max1}");
             }
         }
-        public static void SortRow(int[][] a)
+        public static void SelectionSortRow(int[][] a)
         {
-            Console.Write("Nhap dong ban muon sort: ");
+            Console.Write("Nhập dòng bạn muốn sort: ");
             int row = int.Parse(Console.ReadLine());
-            int[] line = a[row];
-            for (int i = 0; i < line.Length; i++)
-            {
-                for (int j = 0; j < i - 1; j++)
-                    if (line[i] > line[j])
-                    {
-                        int temp = line[i];
-                        line[i] = line[j];
-                        line[j] = temp;
-                    }
-            }
 
+            for (int i = 0; i < a[row].Length - 1; i++)
+            {
+                int minIndex = i;
+
+                for (int j = i + 1; j < a[row].Length; j++)
+                {
+                    if (a[row][j] < a[row][minIndex])
+                    {
+                        minIndex = j;
+                    }
+                }
+
+                int temp = a[row][i];
+                a[row][i] = a[row][minIndex];
+                a[row][minIndex] = temp;
+            }
         }
     }
 }
