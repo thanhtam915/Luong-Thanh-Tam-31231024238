@@ -4,31 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Luong_Thanh_Tam_31231024238
+namespace ConsoleApp1
 {
     internal class Session3
     {
         public static void Main3()
         {
-            //Ex2();
-            //Ex3();
-            Ex5();
-
+            EX1();
+            EX2();
+            Ex3();
 
             Console.ReadKey();
         }
-        public static void Ex2()
+        public static void EX1()
         {
             Console.WriteLine("y\t x = y^2 + 2y + 1");
-            Console.WriteLine("----------------------");
+            Console.WriteLine("------------------------");
 
             for (int y = -5; y <= 5; y++)
             {
-                int x = (y * y) + (2 * y) + 1;
-                Console.WriteLine("{0}\t {1}", y, x);
+                int x = y * y + 2 * y + 1;
+                Console.WriteLine($"{y}\t {x}");
             }
         }
-        public static void Ex3()
+        public static void EX2()
         {
             Console.WriteLine("Enter distance (Km): ");
             double distanceKm = double.Parse(Console.ReadLine());
@@ -47,7 +46,7 @@ namespace Luong_Thanh_Tam_31231024238
             Console.WriteLine($"SpeedKmPerHour: {SpeedKmPerHour}");
             Console.WriteLine($"SpeedMilesPerHour: {SpeedMilesPerHour}");
         }
-        public static void Ex5()
+        public static void Ex3()
         {
             Console.Write("Enter a character: ");
             char input = Console.ReadKey().KeyChar;
@@ -72,3 +71,4 @@ namespace Luong_Thanh_Tam_31231024238
         }
     }
 }
+

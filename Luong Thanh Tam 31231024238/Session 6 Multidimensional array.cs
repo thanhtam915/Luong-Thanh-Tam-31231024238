@@ -8,7 +8,7 @@ namespace Luong_Thanh_Tam_31231024238
 {
     internal class Session8
     {
-        public static void Main()
+        public static void Main6()
         {
             //int[,] a;
             Console.Write("Nhap so dong: "); int rows = int.Parse(Console.ReadLine());

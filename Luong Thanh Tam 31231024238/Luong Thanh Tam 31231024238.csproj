@@ -9,28 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Session1.cs" />
-    <Compile Remove="Session2.cs" />
-    <Compile Remove="Session3.cs" />
-    <Compile Remove="Session4.cs" />
-    <Compile Remove="Session5.cs" />
-    <Compile Remove="Session6.cs" />
-    <Compile Remove="Session7.cs" />
-    <Compile Remove="Session8-01.cs" />
-    <Compile Remove="Session8-03.cs" />
+    <Compile Remove="Session 6 Jagged array.cs" />
+    <Compile Remove="Session 6 Multidimensional array.cs" />
+    <Compile Remove="Session 6 Single dimensional array.cs" />
     <Compile Remove="TaiXiu.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Session1.cs" />
-    <None Include="Session2.cs" />
-    <None Include="Session3.cs" />
-    <None Include="Session4.cs" />
-    <None Include="Session5.cs" />
-    <None Include="Session6.cs" />
-    <None Include="Session7.cs" />
-    <None Include="Session8-01.cs" />
-    <None Include="Session8-03.cs" />
+    <None Include="Session 6 Single dimensional array.cs" />
+    <None Include="Session 6 Multidimensional array.cs" />
+    <None Include="Session 6 Jagged array.cs" />
     <None Include="TaiXiu.cs" />
   </ItemGroup>
 
